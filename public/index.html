@@ -2,351 +2,369 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <title>FFVN.TGM — VIDEO 4K</title>
 
 <style>
-@font-face {
-  font-family: "GFF-LATIN-BOLD";
-  src: url("/fonts/GFFLatinW05-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-display: swap;
+@font-face{
+  font-family:GFF-LATIN-BOLD;
+  src:url("/fonts/GFFLatinW05-Bold.woff2") format("woff2");
+  font-weight:700;
+  font-display:swap;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-html,
-body {
-  min-height: 100%;
-}
-
-body {
+body{
+  min-height:100vh;
   background:
-    radial-gradient(circle at 15% 10%, rgba(255,105,0,.16), transparent 30%),
-    radial-gradient(circle at 90% 90%, rgba(255,55,0,.12), transparent 35%),
+    radial-gradient(circle at 20% 10%,rgba(255,100,0,.18),transparent 30%),
+    radial-gradient(circle at 85% 90%,rgba(255,50,0,.13),transparent 35%),
     #050505;
-  color: #fff;
-  font-family: "GFF-LATIN-BOLD", Arial, sans-serif;
+  color:#fff;
+  font-family:GFF-LATIN-BOLD,Arial,sans-serif;
 }
 
-.container {
-  width: min(100% - 24px, 720px);
-  margin: auto;
-  padding: 25px 0 45px;
+.container{
+  width:calc(100% - 20px);
+  max-width:720px;
+  margin:auto;
+  padding:25px 0 45px;
 }
 
-.logo {
-  display: block;
-  width: 78px;
-  height: 78px;
-  margin: 0 auto 15px;
-  border-radius: 22px;
-  object-fit: cover;
-  box-shadow: 0 0 35px rgba(255,85,0,.3);
+.logo{
+  display:block;
+  width:76px;
+  height:76px;
+  object-fit:cover;
+  border-radius:22px;
+  margin:0 auto 15px;
+  box-shadow:0 0 35px rgba(255,80,0,.3);
 }
 
-.brand {
-  text-align: center;
-  font-size: clamp(30px, 9vw, 48px);
-  background: linear-gradient(135deg,#fff,#ff9700,#ff3d00);
-  -webkit-background-clip: text;
-  color: transparent;
+.title{
+  text-align:center;
+  font-size:clamp(30px,9vw,48px);
+  background:linear-gradient(135deg,#fff,#ff9700,#ff3d00);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
-.subtitle {
-  text-align: center;
-  margin-top: 7px;
-  color: #777;
-  font-size: 12px;
+.sub{
+  text-align:center;
+  margin-top:7px;
+  color:#777;
+  font-size:11px;
 }
 
-.card {
-  margin-top: 25px;
-  padding: 16px;
-  border-radius: 25px;
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.045);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 25px 70px rgba(0,0,0,.5);
+.card{
+  margin-top:25px;
+  padding:15px;
+  border-radius:25px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);
 }
 
-/* UPLOAD */
+/* =========================
+   CHỌN VIDEO
+========================= */
 
-.upload-zone {
-  position: relative;
-  min-height: 220px;
-  border: 1px dashed rgba(255,105,0,.5);
-  border-radius: 20px;
-  background: rgba(255,90,0,.025);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-  overflow: hidden;
-  transition: .25s;
+.select-box{
+  width:100%;
+  min-height:220px;
+  border:1px dashed rgba(255,110,0,.55);
+  border-radius:20px;
+  background:rgba(255,90,0,.025);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transition:.2s;
 }
 
-.upload-zone:hover,
-.upload-zone.drag {
-  border-color: #ff7300;
-  background: rgba(255,90,0,.08);
+.select-box.drag{
+  border-color:#ff7300;
+  background:rgba(255,90,0,.1);
 }
 
-.upload-content {
-  padding: 25px;
+.select-content{
+  padding:25px;
 }
 
-.upload-icon {
-  width: 64px;
-  height: 64px;
-  margin: auto;
-  border-radius: 20px;
-  display: grid;
-  place-items: center;
-  font-size: 29px;
-  background: linear-gradient(135deg,#ff8a00,#ff3d00);
-  box-shadow: 0 12px 35px rgba(255,70,0,.25);
+.icon{
+  width:65px;
+  height:65px;
+  margin:auto;
+  display:grid;
+  place-items:center;
+  border-radius:20px;
+  background:linear-gradient(135deg,#ff8a00,#ff3d00);
+  font-size:28px;
+  box-shadow:0 12px 35px rgba(255,70,0,.25);
 }
 
-.upload-title {
-  margin-top: 15px;
-  font-size: 20px;
+.select-title{
+  margin-top:15px;
+  font-size:20px;
 }
 
-.upload-desc {
-  margin-top: 7px;
-  color: #777;
-  font-family: Arial,sans-serif;
-  font-size: 12px;
+.select-desc{
+  margin-top:7px;
+  color:#777;
+  font-family:Arial,sans-serif;
+  font-size:12px;
 }
 
-#videoInput {
-  display: none;
+/* INPUT THẬT */
+#videoInput{
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+  pointer-events:none;
 }
 
-/* VIDEO PREVIEW */
-
-.preview {
-  display: none;
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #000;
+/* NÚT THẬT */
+.choose-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:190px;
+  margin-top:17px;
+  padding:14px 22px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(135deg,#ff8a00,#ff3d00);
+  color:#fff;
+  cursor:pointer;
+  font-family:GFF-LATIN-BOLD,Arial,sans-serif;
+  font-size:14px;
+  -webkit-tap-highlight-color:transparent;
 }
 
-.preview video {
-  display: block;
-  width: 100%;
-  max-height: 420px;
-  object-fit: contain;
-  background: #000;
+/* =========================
+   PREVIEW
+========================= */
+
+.preview{
+  display:none;
+  position:relative;
+  overflow:hidden;
+  border-radius:18px;
+  background:#000;
 }
 
-.change-video {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: 0;
-  padding: 9px 12px;
-  border-radius: 10px;
-  color: #fff;
-  background: rgba(0,0,0,.7);
-  cursor: pointer;
-  font-family: inherit;
+.preview video{
+  width:100%;
+  max-height:420px;
+  display:block;
+  object-fit:contain;
+  background:#000;
 }
 
-/* VIDEO INFO */
-
-.video-info {
-  display: none;
-  margin-top: 13px;
-  grid-template-columns: repeat(2,1fr);
-  gap: 9px;
+.change-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:5;
+  border:0;
+  padding:9px 12px;
+  border-radius:10px;
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  font-family:GFF-LATIN-BOLD,Arial,sans-serif;
+  cursor:pointer;
 }
 
-.info {
-  padding: 13px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,255,255,.06);
+/* =========================
+   FILE
+========================= */
+
+.file-name{
+  display:none;
+  margin-top:12px;
+  padding:12px;
+  border-radius:13px;
+  background:rgba(255,255,255,.04);
+  color:#aaa;
+  text-align:center;
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  word-break:break-word;
 }
 
-.info span {
-  display: block;
+/* =========================
+   THÔNG TIN VIDEO
+========================= */
+
+.video-info{
+  display:none;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:12px;
 }
 
-.info .label {
-  color: #666;
-  font-size: 10px;
-  margin-bottom: 5px;
+.info{
+  padding:13px;
+  border-radius:14px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
 }
 
-.info .value {
-  color: #fff;
-  font-size: 13px;
-  word-break: break-word;
+.info-label{
+  display:block;
+  color:#666;
+  font-size:9px;
+  margin-bottom:6px;
 }
 
-/* FILE */
-
-.file-name {
-  display: none;
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: 13px;
-  background: rgba(255,255,255,.04);
-  color: #aaa;
-  text-align: center;
-  font-family: Arial,sans-serif;
-  font-size: 12px;
-  word-break: break-word;
+.info-value{
+  display:block;
+  color:#fff;
+  font-size:13px;
+  word-break:break-word;
 }
 
-/* API */
+/* =========================
+   API
+========================= */
 
-.field {
-  margin-top: 14px;
-  padding: 14px;
-  border-radius: 15px;
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,255,255,.06);
+.field{
+  margin-top:14px;
+  padding:14px;
+  border-radius:15px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
 }
 
-.field label {
-  display: block;
-  margin-bottom: 7px;
-  color: #666;
-  font-size: 10px;
+.field label{
+  display:block;
+  margin-bottom:7px;
+  color:#666;
+  font-size:9px;
 }
 
-.field input {
-  width: 100%;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: #fff;
-  font-family: Arial,sans-serif;
-  font-size: 14px;
+.field input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#fff;
+  font-family:Arial,sans-serif;
+  font-size:14px;
 }
 
-/* BUTTON */
+/* =========================
+   BUTTON
+========================= */
 
-.main-button {
-  width: 100%;
-  margin-top: 15px;
-  padding: 17px;
-  border: 0;
-  border-radius: 16px;
-  color: #fff;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 15px;
-  background: linear-gradient(135deg,#ff8a00,#ff3d00);
-  box-shadow: 0 12px 35px rgba(255,70,0,.2);
-  transition: .2s;
+.process-btn{
+  width:100%;
+  margin-top:15px;
+  padding:17px;
+  border:0;
+  border-radius:16px;
+  background:linear-gradient(135deg,#ff8a00,#ff3d00);
+  color:#fff;
+  font-family:GFF-LATIN-BOLD,Arial,sans-serif;
+  font-size:15px;
+  cursor:pointer;
+  transition:.2s;
 }
 
-.main-button:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.08);
+.process-btn:disabled{
+  opacity:.4;
+  cursor:not-allowed;
 }
 
-.main-button:disabled {
-  opacity: .4;
-  cursor: not-allowed;
-  transform: none;
+.process-btn:not(:disabled):active{
+  transform:scale(.98);
 }
 
-/* PROGRESS */
+/* =========================
+   PROGRESS
+========================= */
 
-.progress-box {
-  display: none;
-  margin-top: 18px;
+.progress-box{
+  display:none;
+  margin-top:18px;
 }
 
-.progress-head {
-  display: flex;
-  justify-content: space-between;
-  color: #aaa;
-  font-size: 11px;
-  margin-bottom: 8px;
+.progress-head{
+  display:flex;
+  justify-content:space-between;
+  color:#aaa;
+  font-size:11px;
+  margin-bottom:8px;
 }
 
-.progress {
-  width: 100%;
-  height: 9px;
-  overflow: hidden;
-  border-radius: 99px;
-  background: #181818;
+.progress{
+  height:9px;
+  overflow:hidden;
+  border-radius:99px;
+  background:#181818;
 }
 
-.progress-bar {
-  width: 0%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg,#ff4500,#ffae00);
-  transition: width .3s;
+.progress-bar{
+  width:0;
+  height:100%;
+  background:linear-gradient(90deg,#ff4500,#ffae00);
+  border-radius:99px;
+  transition:width .3s;
 }
 
-.status {
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 13px;
-  text-align: center;
-  background: rgba(255,255,255,.04);
-  color: #888;
-  font-family: Arial,sans-serif;
-  font-size: 12px;
+.status{
+  margin-top:10px;
+  padding:12px;
+  border-radius:13px;
+  text-align:center;
+  color:#888;
+  background:rgba(255,255,255,.04);
+  font-family:Arial,sans-serif;
+  font-size:12px;
 }
 
-/* RESULT */
+/* =========================
+   RESULT
+========================= */
 
-.result {
-  display: none;
-  margin-top: 15px;
+.result{
+  display:none;
+  margin-top:15px;
 }
 
-.download {
-  display: block;
-  padding: 16px;
-  border-radius: 15px;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background: #151515;
-  border: 1px solid rgba(255,255,255,.08);
+.download{
+  display:block;
+  padding:16px;
+  border-radius:15px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#151515;
+  border:1px solid rgba(255,255,255,.08);
 }
 
-/* FOOTER */
-
-.footer {
-  margin-top: 23px;
-  text-align: center;
-  color: #444;
-  font-size: 10px;
+.footer{
+  margin-top:23px;
+  text-align:center;
+  color:#444;
+  font-size:10px;
 }
 
-@media(max-width:500px) {
-  .container {
-    width: min(100% - 16px,720px);
+@media(max-width:500px){
+  .card{
+    padding:12px;
   }
 
-  .card {
-    padding: 12px;
-  }
-
-  .upload-zone {
-    min-height: 200px;
-  }
-
-  .video-info {
-    grid-template-columns: 1fr 1fr;
+  .select-box{
+    min-height:230px;
   }
 }
 </style>
@@ -354,7 +372,7 @@ body {
 
 <body>
 
-<main class="container">
+<div class="container">
 
   <img
     class="logo"
@@ -362,45 +380,56 @@ body {
     alt="FFVN.TGM"
   >
 
-  <h1 class="brand">FFVN.TGM</h1>
+  <h1 class="title">FFVN.TGM</h1>
 
-  <p class="subtitle">
-    VIDEO ENHANCER • AUTO FRAME DETECTION • 4K
-  </p>
+  <div class="sub">
+    VIDEO ENHANCER • AUTO FRAME • 4K
+  </div>
 
-  <section class="card">
+  <div class="card">
 
-    <!-- UPLOAD -->
-    <label
-      class="upload-zone"
-      id="uploadZone"
-      for="videoInput"
+    <!-- KHU VỰC CHỌN VIDEO -->
+    <div
+      class="select-box"
+      id="selectBox"
     >
 
-      <div class="upload-content">
+      <div class="select-content">
 
-        <div class="upload-icon">↑</div>
+        <div class="icon">🎬</div>
 
-        <div class="upload-title">
-          CHỌN VIDEO
+        <div class="select-title">
+          CHÈN VIDEO
         </div>
 
-        <div class="upload-desc">
-          MP4 • MOV • MKV • WEBM • AVI
+        <div class="select-desc">
+          Tự động nhận dạng khung hình video
         </div>
+
+        <button
+          type="button"
+          class="choose-btn"
+          id="chooseBtn"
+        >
+          + CHỌN VIDEO
+        </button>
 
       </div>
 
-      <input
-        id="videoInput"
-        type="file"
-        accept="video/*,.mp4,.mov,.mkv,.webm,.avi"
-      >
+    </div>
 
-    </label>
+    <!-- INPUT -->
+    <input
+      id="videoInput"
+      type="file"
+      accept="video/*,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+    >
 
     <!-- PREVIEW -->
-    <div class="preview" id="preview">
+    <div
+      class="preview"
+      id="preview"
+    >
 
       <video
         id="videoPreview"
@@ -410,31 +439,34 @@ body {
       ></video>
 
       <button
-        class="change-video"
-        id="changeVideo"
         type="button"
+        class="change-btn"
+        id="changeBtn"
       >
-        Đổi video
+        ĐỔI VIDEO
       </button>
 
     </div>
 
-    <!-- FILE NAME -->
+    <!-- TÊN FILE -->
     <div
       class="file-name"
       id="fileName"
     ></div>
 
-    <!-- AUTO VIDEO INFO -->
+    <!-- THÔNG TIN -->
     <div
       class="video-info"
       id="videoInfo"
     >
 
       <div class="info">
-        <span class="label">ĐỘ PHÂN GIẢI</span>
+        <span class="info-label">
+          ĐỘ PHÂN GIẢI
+        </span>
+
         <span
-          class="value"
+          class="info-value"
           id="resolution"
         >
           —
@@ -442,19 +474,25 @@ body {
       </div>
 
       <div class="info">
-        <span class="label">TỶ LỆ KHUNG HÌNH</span>
+        <span class="info-label">
+          KHUNG HÌNH
+        </span>
+
         <span
-          class="value"
-          id="aspectRatio"
+          class="info-value"
+          id="aspect"
         >
           —
         </span>
       </div>
 
       <div class="info">
-        <span class="label">THỜI LƯỢNG</span>
+        <span class="info-label">
+          THỜI LƯỢNG
+        </span>
+
         <span
-          class="value"
+          class="info-value"
           id="duration"
         >
           —
@@ -462,10 +500,13 @@ body {
       </div>
 
       <div class="info">
-        <span class="label">DUNG LƯỢNG</span>
+        <span class="info-label">
+          DUNG LƯỢNG
+        </span>
+
         <span
-          class="value"
-          id="fileSize"
+          class="info-value"
+          id="size"
         >
           —
         </span>
@@ -481,16 +522,17 @@ body {
       <input
         id="apiKey"
         type="password"
-        placeholder="Nhập API Key của bạn"
+        placeholder="Nhập API Key"
         autocomplete="off"
       >
 
     </div>
 
-    <!-- PROCESS -->
+    <!-- XỬ LÝ -->
     <button
-      class="main-button"
-      id="enhanceBtn"
+      type="button"
+      class="process-btn"
+      id="processBtn"
       disabled
     >
       ✦ CHỈNH VIDEO SẮC NÉT 4K
@@ -503,6 +545,7 @@ body {
     >
 
       <div class="progress-head">
+
         <span id="progressText">
           Đang xử lý...
         </span>
@@ -510,13 +553,16 @@ body {
         <span id="progressPercent">
           0%
         </span>
+
       </div>
 
       <div class="progress">
+
         <div
           class="progress-bar"
           id="progressBar"
         ></div>
+
       </div>
 
       <div
@@ -528,7 +574,7 @@ body {
 
     </div>
 
-    <!-- RESULT -->
+    <!-- KẾT QUẢ -->
     <div
       class="result"
       id="result"
@@ -544,214 +590,151 @@ body {
 
     </div>
 
-  </section>
+  </div>
 
-  <footer class="footer">
+  <div class="footer">
     FFVN.TGM • PRIVATE VIDEO API
-  </footer>
+  </div>
 
-</main>
+</div>
 
 <script>
 
-const API_BASE = "";
+const $ = id =>
+  document.getElementById(id);
 
 const videoInput =
-  document.getElementById("videoInput");
+  $("videoInput");
 
-const uploadZone =
-  document.getElementById("uploadZone");
+const chooseBtn =
+  $("chooseBtn");
+
+const changeBtn =
+  $("changeBtn");
+
+const selectBox =
+  $("selectBox");
 
 const preview =
-  document.getElementById("preview");
+  $("preview");
 
 const videoPreview =
-  document.getElementById("videoPreview");
-
-const changeVideo =
-  document.getElementById("changeVideo");
+  $("videoPreview");
 
 const fileName =
-  document.getElementById("fileName");
+  $("fileName");
 
 const videoInfo =
-  document.getElementById("videoInfo");
+  $("videoInfo");
 
 const resolution =
-  document.getElementById("resolution");
+  $("resolution");
 
-const aspectRatio =
-  document.getElementById("aspectRatio");
+const aspect =
+  $("aspect");
 
 const duration =
-  document.getElementById("duration");
+  $("duration");
 
-const fileSize =
-  document.getElementById("fileSize");
+const size =
+  $("size");
 
 const apiKey =
-  document.getElementById("apiKey");
+  $("apiKey");
 
-const enhanceBtn =
-  document.getElementById("enhanceBtn");
+const processBtn =
+  $("processBtn");
 
 const progressBox =
-  document.getElementById("progressBox");
+  $("progressBox");
 
 const progressBar =
-  document.getElementById("progressBar");
-
-const progressPercent =
-  document.getElementById("progressPercent");
+  $("progressBar");
 
 const progressText =
-  document.getElementById("progressText");
+  $("progressText");
+
+const progressPercent =
+  $("progressPercent");
 
 const status =
-  document.getElementById("status");
+  $("status");
 
 const result =
-  document.getElementById("result");
+  $("result");
 
 const downloadBtn =
-  document.getElementById("downloadBtn");
+  $("downloadBtn");
 
 let selectedFile = null;
-let currentJobId = null;
-let polling = null;
 let previewURL = null;
+let jobId = null;
+let polling = null;
 
 
-/* =========================
-   API KEY
-========================= */
+/* ==========================
+   CHỌN VIDEO
+========================== */
 
-apiKey.value =
-  localStorage.getItem("FFVN_TGM_API_KEY") || "";
+chooseBtn.addEventListener("click", function(e){
 
-apiKey.addEventListener("input", () => {
+  e.preventDefault();
+  e.stopPropagation();
 
-  localStorage.setItem(
-    "FFVN_TGM_API_KEY",
-    apiKey.value.trim()
-  );
+  videoInput.click();
 
 });
 
 
-/* =========================
-   SELECT VIDEO
-========================= */
+/* ==========================
+   ĐỔI VIDEO
+========================== */
 
-videoInput.addEventListener(
-  "change",
-  () => {
+changeBtn.addEventListener("click", function(e){
 
-    if (
-      videoInput.files &&
-      videoInput.files.length
-    ) {
+  e.preventDefault();
+  e.stopPropagation();
 
-      loadVideo(
-        videoInput.files[0]
-      );
+  videoInput.value = "";
 
-    }
+  videoInput.click();
 
-  }
-);
+});
 
 
-/* =========================
-   CHANGE VIDEO
-========================= */
+/* ==========================
+   INPUT VIDEO
+========================== */
 
-changeVideo.addEventListener(
-  "click",
-  () => {
+videoInput.addEventListener("change", function(){
+
+  const file = this.files && this.files[0];
+
+  if(!file) return;
+
+  loadVideo(file);
+
+});
+
+
+/* ==========================
+   LOAD VIDEO
+========================== */
+
+function loadVideo(file){
+
+  if(!isVideo(file)){
+
+    alert("File bạn chọn không phải video.");
 
     videoInput.value = "";
 
-    videoInput.click();
-
-  }
-);
-
-
-/* =========================
-   DRAG & DROP
-========================= */
-
-uploadZone.addEventListener(
-  "dragover",
-  event => {
-
-    event.preventDefault();
-
-    uploadZone.classList.add("drag");
-
-  }
-);
-
-uploadZone.addEventListener(
-  "dragleave",
-  () => {
-
-    uploadZone.classList.remove("drag");
-
-  }
-);
-
-uploadZone.addEventListener(
-  "drop",
-  event => {
-
-    event.preventDefault();
-
-    uploadZone.classList.remove("drag");
-
-    const file =
-      event.dataTransfer.files[0];
-
-    if (!file) return;
-
-    if (
-      !file.type.startsWith("video/") &&
-      !/\.(mp4|mov|mkv|webm|avi)$/i.test(file.name)
-    ) {
-
-      alert("Vui lòng chọn một file video.");
-
-      return;
-
-    }
-
-    loadVideo(file);
-
-  }
-);
-
-
-/* =========================
-   LOAD VIDEO
-========================= */
-
-function loadVideo(file) {
-
-  if (
-    !file.type.startsWith("video/") &&
-    !/\.(mp4|mov|mkv|webm|avi)$/i.test(file.name)
-  ) {
-
-    alert("File này không phải video.");
-
     return;
-
   }
 
   selectedFile = file;
 
-  if (previewURL) {
+  if(previewURL){
     URL.revokeObjectURL(previewURL);
   }
 
@@ -763,41 +746,39 @@ function loadVideo(file) {
 
   videoPreview.load();
 
-  fileName.style.display =
-    "block";
-
-  fileName.textContent =
-    file.name;
+  selectBox.style.display =
+    "none";
 
   preview.style.display =
     "block";
 
-  uploadZone.style.display =
-    "none";
+  fileName.style.display =
+    "block";
 
   videoInfo.style.display =
     "grid";
 
-  enhanceBtn.disabled =
+  processBtn.disabled =
     false;
 
-  result.style.display =
-    "none";
+  fileName.textContent =
+    file.name;
 
-  progressBox.style.display =
-    "none";
-
-
-  /* FILE SIZE */
-
-  fileSize.textContent =
+  size.textContent =
     formatBytes(file.size);
 
+  resolution.textContent =
+    "Đang đọc...";
 
-  /* VIDEO METADATA */
+  aspect.textContent =
+    "Đang đọc...";
+
+  duration.textContent =
+    "Đang đọc...";
+
 
   videoPreview.onloadedmetadata =
-    () => {
+    function(){
 
       const width =
         videoPreview.videoWidth;
@@ -805,65 +786,71 @@ function loadVideo(file) {
       const height =
         videoPreview.videoHeight;
 
-      const seconds =
-        videoPreview.duration;
-
-
       resolution.textContent =
-        `${width} × ${height}`;
+        width + " × " + height;
 
-
-      aspectRatio.textContent =
-        getAspectRatio(
+      aspect.textContent =
+        detectAspect(
           width,
           height
         );
 
-
       duration.textContent =
-        formatDuration(seconds);
+        formatDuration(
+          videoPreview.duration
+        );
 
     };
 
 }
 
 
-/* =========================
-   ASPECT RATIO
-========================= */
+/* ==========================
+   KIỂM TRA VIDEO
+========================== */
 
-function getAspectRatio(
-  width,
-  height
-) {
+function isVideo(file){
 
-  if (!width || !height) {
-    return "—";
+  if(
+    file.type &&
+    file.type.startsWith("video/")
+  ){
+    return true;
   }
 
-  const gcd =
-    greatestCommonDivisor(
-      width,
-      height
-    );
-
-  const w =
-    width / gcd;
-
-  const h =
-    height / gcd;
-
-  return `${w}:${h}`;
+  return /\.(mp4|mov|mkv|webm|avi|m4v)$/i
+    .test(file.name);
 
 }
 
 
-function greatestCommonDivisor(
-  a,
-  b
-) {
+/* ==========================
+   KHUNG HÌNH
+========================== */
 
-  while (b !== 0) {
+function detectAspect(width,height){
+
+  if(!width || !height){
+    return "—";
+  }
+
+  const gcd =
+    getGCD(width,height);
+
+  const w =
+    Math.round(width / gcd);
+
+  const h =
+    Math.round(height / gcd);
+
+  return w + ":" + h;
+
+}
+
+
+function getGCD(a,b){
+
+  while(b !== 0){
 
     const temp = b;
 
@@ -878,20 +865,44 @@ function greatestCommonDivisor(
 }
 
 
-/* =========================
-   DURATION
-========================= */
+/* ==========================
+   DUNG LƯỢNG
+========================== */
 
-function formatDuration(
-  seconds
-) {
+function formatBytes(bytes){
 
-  if (
-    !Number.isFinite(seconds)
-  ) {
+  if(bytes === 0){
+    return "0 B";
+  }
 
+  const units =
+    ["B","KB","MB","GB"];
+
+  const i =
+    Math.floor(
+      Math.log(bytes) /
+      Math.log(1024)
+    );
+
+  return (
+    (bytes /
+      Math.pow(1024,i))
+      .toFixed(2)
+    + " "
+    + units[i]
+  );
+
+}
+
+
+/* ==========================
+   THỜI LƯỢNG
+========================== */
+
+function formatDuration(seconds){
+
+  if(!Number.isFinite(seconds)){
     return "—";
-
   }
 
   seconds =
@@ -908,7 +919,7 @@ function formatDuration(
   const s =
     seconds % 60;
 
-  if (h > 0) {
+  if(h > 0){
 
     return (
       String(h).padStart(2,"0")
@@ -929,49 +940,82 @@ function formatDuration(
 }
 
 
-/* =========================
-   FILE SIZE
-========================= */
+/* ==========================
+   API KEY
+========================== */
 
-function formatBytes(bytes) {
+apiKey.value =
+  localStorage.getItem(
+    "FFVN_TGM_API_KEY"
+  ) || "";
 
-  if (!bytes) {
-    return "0 B";
-  }
+apiKey.addEventListener(
+  "input",
+  function(){
 
-  const units =
-    ["B","KB","MB","GB"];
-
-  const index =
-    Math.floor(
-      Math.log(bytes) /
-      Math.log(1024)
+    localStorage.setItem(
+      "FFVN_TGM_API_KEY",
+      this.value.trim()
     );
 
-  return (
-    (bytes /
-      Math.pow(1024,index))
-      .toFixed(2)
-    + " "
-    + units[index]
-  );
-
-}
+  }
+);
 
 
-/* =========================
-   PROCESS VIDEO
-========================= */
+/* ==========================
+   DRAG DROP
+========================== */
 
-enhanceBtn.addEventListener(
+selectBox.addEventListener(
+  "dragover",
+  function(e){
+
+    e.preventDefault();
+
+    selectBox.classList.add("drag");
+
+  }
+);
+
+selectBox.addEventListener(
+  "dragleave",
+  function(){
+
+    selectBox.classList.remove("drag");
+
+  }
+);
+
+selectBox.addEventListener(
+  "drop",
+  function(e){
+
+    e.preventDefault();
+
+    selectBox.classList.remove("drag");
+
+    const file =
+      e.dataTransfer.files[0];
+
+    if(file){
+      loadVideo(file);
+    }
+
+  }
+);
+
+
+/* ==========================
+   XỬ LÝ 4K
+========================== */
+
+processBtn.addEventListener(
   "click",
-  async () => {
+  async function(){
 
-    if (!selectedFile) {
+    if(!selectedFile){
 
-      alert(
-        "Vui lòng chọn video trước."
-      );
+      alert("Bạn chưa chọn video.");
 
       return;
 
@@ -980,11 +1024,9 @@ enhanceBtn.addEventListener(
     const key =
       apiKey.value.trim();
 
-    if (!key) {
+    if(!key){
 
-      alert(
-        "Vui lòng nhập API Key."
-      );
+      alert("Vui lòng nhập API Key.");
 
       apiKey.focus();
 
@@ -992,7 +1034,7 @@ enhanceBtn.addEventListener(
 
     }
 
-    enhanceBtn.disabled =
+    processBtn.disabled =
       true;
 
     progressBox.style.display =
@@ -1007,10 +1049,10 @@ enhanceBtn.addEventListener(
     );
 
     status.textContent =
-      "Đang gửi video lên API...";
+      "Đang gửi video lên máy chủ...";
 
 
-    try {
+    try{
 
       const formData =
         new FormData();
@@ -1023,15 +1065,15 @@ enhanceBtn.addEventListener(
 
       const response =
         await fetch(
-          `${API_BASE}/api/enhance`,
+          "/api/enhance",
           {
-            method: "POST",
+            method:"POST",
 
-            headers: {
-              "x-api-key": key
+            headers:{
+              "x-api-key":key
             },
 
-            body: formData
+            body:formData
           }
         );
 
@@ -1040,19 +1082,18 @@ enhanceBtn.addEventListener(
         await response.json();
 
 
-      if (!response.ok) {
+      if(!response.ok){
 
         throw new Error(
           data.error ||
-          "Không thể xử lý video."
+          "API xử lý thất bại."
         );
 
       }
 
 
-      currentJobId =
+      jobId =
         data.id;
-
 
       setProgress(
         5,
@@ -1060,24 +1101,22 @@ enhanceBtn.addEventListener(
       );
 
       status.textContent =
-        "FFmpeg đang xử lý video 4K...";
-
+        "FFmpeg đang xử lý video...";
 
       startPolling();
 
     }
-
-    catch (error) {
-
-      status.textContent =
-        "Lỗi: " + error.message;
+    catch(error){
 
       setProgress(
         0,
         "Thất bại"
       );
 
-      enhanceBtn.disabled =
+      status.textContent =
+        "Lỗi: " + error.message;
+
+      processBtn.disabled =
         false;
 
     }
@@ -1086,30 +1125,29 @@ enhanceBtn.addEventListener(
 );
 
 
-/* =========================
-   POLLING
-========================= */
+/* ==========================
+   THEO DÕI TIẾN ĐỘ
+========================== */
 
-function startPolling() {
+function startPolling(){
 
   clearInterval(polling);
 
   polling =
     setInterval(
-      async () => {
+      async function(){
 
-        try {
+        try{
 
           const key =
             apiKey.value.trim();
 
-
           const response =
             await fetch(
-              `${API_BASE}/api/status/${currentJobId}`,
+              "/api/status/" + jobId,
               {
-                headers: {
-                  "x-api-key": key
+                headers:{
+                  "x-api-key":key
                 }
               }
             );
@@ -1119,7 +1157,7 @@ function startPolling() {
             await response.json();
 
 
-          if (!response.ok) {
+          if(!response.ok){
 
             throw new Error(
               data.error ||
@@ -1143,7 +1181,7 @@ function startPolling() {
           );
 
 
-          if (data.message) {
+          if(data.message){
 
             status.textContent =
               data.message;
@@ -1151,48 +1189,43 @@ function startPolling() {
           }
 
 
-          if (
+          if(
             data.status ===
             "completed"
-          ) {
+          ){
 
             clearInterval(
               polling
             );
 
 
-            const downloadURL =
-              `${API_BASE}/api/download/${currentJobId}?key=${encodeURIComponent(key)}`;
-
-
             downloadBtn.href =
-              downloadURL;
+              "/api/download/"
+              + jobId
+              + "?key="
+              + encodeURIComponent(key);
 
 
             result.style.display =
               "block";
-
 
             setProgress(
               100,
               "Hoàn tất"
             );
 
-
             status.textContent =
-              "Video 4K đã xử lý thành công.";
+              "Video 4K đã xử lý xong.";
 
-
-            enhanceBtn.disabled =
+            processBtn.disabled =
               false;
 
           }
 
 
-          if (
-            data.status ===
-            "error"
-          ) {
+          if(
+            data.status === "error"
+          ){
 
             throw new Error(
               data.error ||
@@ -1202,23 +1235,21 @@ function startPolling() {
           }
 
         }
-
-        catch (error) {
+        catch(error){
 
           clearInterval(
             polling
           );
-
-          status.textContent =
-            "Lỗi: " +
-            error.message;
 
           setProgress(
             0,
             "Thất bại"
           );
 
-          enhanceBtn.disabled =
+          status.textContent =
+            "Lỗi: " + error.message;
+
+          processBtn.disabled =
             false;
 
         }
@@ -1230,14 +1261,14 @@ function startPolling() {
 }
 
 
-/* =========================
+/* ==========================
    PROGRESS
-========================= */
+========================== */
 
 function setProgress(
   percent,
   text
-) {
+){
 
   percent =
     Math.max(
@@ -1248,14 +1279,11 @@ function setProgress(
       )
     );
 
-
   progressBar.style.width =
     percent + "%";
 
-
   progressPercent.textContent =
     Math.round(percent) + "%";
-
 
   progressText.textContent =
     text;
@@ -1263,15 +1291,15 @@ function setProgress(
 }
 
 
-/* =========================
+/* ==========================
    CLEANUP
-========================= */
+========================== */
 
 window.addEventListener(
   "beforeunload",
-  () => {
+  function(){
 
-    if (previewURL) {
+    if(previewURL){
 
       URL.revokeObjectURL(
         previewURL
