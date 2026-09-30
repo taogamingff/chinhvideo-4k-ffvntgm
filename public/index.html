@@ -2,187 +2,1287 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>FFVN.TGM — CHỈNH VIDEO 4K</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>FFVN.TGM — VIDEO 4K</title>
+
 <style>
-@font-face{
-  font-family:GFF-LATIN-BOLD;
-  src:url("/fonts/GFFLatinW05-Bold.woff2") format("woff2");
-  font-display:swap;
-  font-weight:700;
+@font-face {
+  font-family: "GFF-LATIN-BOLD";
+  src: url("/fonts/GFFLatinW05-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
 }
-:root{
-  --bg:#050505;
-  --panel:rgba(20,20,20,.78);
-  --line:rgba(255,255,255,.11);
-  --text:#fff;
-  --muted:#a9a9a9;
-  --accent:#ff7a00;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:GFF-LATIN-BOLD,Arial,sans-serif;background:
-radial-gradient(circle at 15% 10%,rgba(255,122,0,.18),transparent 30%),
-radial-gradient(circle at 90% 80%,rgba(255,60,0,.12),transparent 35%),var(--bg);color:var(--text)}
-body{padding:22px}
-.wrap{width:min(920px,100%);margin:auto}
-header{text-align:center;margin:20px 0 24px}
-.badge{display:inline-block;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.05);font-size:12px}
-h1{font-size:clamp(28px,7vw,56px);line-height:.95;margin:16px 0 10px}
-.sub{color:var(--muted);font-size:14px}
-.card{border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(18px);border-radius:24px;padding:20px;box-shadow:0 20px 70px rgba(0,0,0,.35)}
-.drop{border:2px dashed rgba(255,122,0,.45);border-radius:20px;padding:42px 18px;text-align:center;cursor:pointer;transition:.2s}
-.drop:hover,.drop.drag{border-color:var(--accent);background:rgba(255,122,0,.07)}
-.drop strong{font-size:22px;display:block}
-.drop span{display:block;color:var(--muted);font-size:12px;margin-top:8px}
-input[type=file]{display:none}
-.row{display:flex;gap:10px;align-items:center;margin-top:16px}
-button{font-family:inherit;border:0;border-radius:14px;padding:14px 18px;background:var(--accent);color:#111;cursor:pointer;font-size:15px}
-button:disabled{opacity:.45;cursor:not-allowed}
-button.secondary{background:#242424;color:#fff;border:1px solid var(--line)}
-.info{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.stat{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.035)}
-.stat b{display:block;font-size:18px}
-.stat small{color:var(--muted)}
-.progress{height:14px;background:#181818;border-radius:99px;overflow:hidden;margin-top:18px;border:1px solid var(--line)}
-.bar{height:100%;width:0;background:linear-gradient(90deg,#ff5a00,#ffb000);transition:width .35s}
-.status{margin-top:10px;color:var(--muted);font-size:13px}
-a.download{display:none;margin-top:15px;text-decoration:none;text-align:center;padding:15px;border-radius:14px;background:#fff;color:#111}
-.note{margin-top:15px;color:#777;font-size:11px;line-height:1.5}
-@media(max-width:600px){body{padding:12px}.card{padding:14px}.info{grid-template-columns:1fr}.row{flex-direction:column}.row button{width:100%}}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,105,0,.16), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(255,55,0,.12), transparent 35%),
+    #050505;
+  color: #fff;
+  font-family: "GFF-LATIN-BOLD", Arial, sans-serif;
+}
+
+.container {
+  width: min(100% - 24px, 720px);
+  margin: auto;
+  padding: 25px 0 45px;
+}
+
+.logo {
+  display: block;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 15px;
+  border-radius: 22px;
+  object-fit: cover;
+  box-shadow: 0 0 35px rgba(255,85,0,.3);
+}
+
+.brand {
+  text-align: center;
+  font-size: clamp(30px, 9vw, 48px);
+  background: linear-gradient(135deg,#fff,#ff9700,#ff3d00);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+  margin-top: 7px;
+  color: #777;
+  font-size: 12px;
+}
+
+.card {
+  margin-top: 25px;
+  padding: 16px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.045);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 70px rgba(0,0,0,.5);
+}
+
+/* UPLOAD */
+
+.upload-zone {
+  position: relative;
+  min-height: 220px;
+  border: 1px dashed rgba(255,105,0,.5);
+  border-radius: 20px;
+  background: rgba(255,90,0,.025);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: .25s;
+}
+
+.upload-zone:hover,
+.upload-zone.drag {
+  border-color: #ff7300;
+  background: rgba(255,90,0,.08);
+}
+
+.upload-content {
+  padding: 25px;
+}
+
+.upload-icon {
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 29px;
+  background: linear-gradient(135deg,#ff8a00,#ff3d00);
+  box-shadow: 0 12px 35px rgba(255,70,0,.25);
+}
+
+.upload-title {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.upload-desc {
+  margin-top: 7px;
+  color: #777;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+}
+
+#videoInput {
+  display: none;
+}
+
+/* VIDEO PREVIEW */
+
+.preview {
+  display: none;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+}
+
+.preview video {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  background: #000;
+}
+
+.change-video {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 0;
+  padding: 9px 12px;
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(0,0,0,.7);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* VIDEO INFO */
+
+.video-info {
+  display: none;
+  margin-top: 13px;
+  grid-template-columns: repeat(2,1fr);
+  gap: 9px;
+}
+
+.info {
+  padding: 13px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.info span {
+  display: block;
+}
+
+.info .label {
+  color: #666;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.info .value {
+  color: #fff;
+  font-size: 13px;
+  word-break: break-word;
+}
+
+/* FILE */
+
+.file-name {
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 13px;
+  background: rgba(255,255,255,.04);
+  color: #aaa;
+  text-align: center;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+  word-break: break-word;
+}
+
+/* API */
+
+.field {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 15px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.field label {
+  display: block;
+  margin-bottom: 7px;
+  color: #666;
+  font-size: 10px;
+}
+
+.field input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  font-family: Arial,sans-serif;
+  font-size: 14px;
+}
+
+/* BUTTON */
+
+.main-button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 17px;
+  border: 0;
+  border-radius: 16px;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  background: linear-gradient(135deg,#ff8a00,#ff3d00);
+  box-shadow: 0 12px 35px rgba(255,70,0,.2);
+  transition: .2s;
+}
+
+.main-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.main-button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* PROGRESS */
+
+.progress-box {
+  display: none;
+  margin-top: 18px;
+}
+
+.progress-head {
+  display: flex;
+  justify-content: space-between;
+  color: #aaa;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.progress {
+  width: 100%;
+  height: 9px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #181818;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg,#ff4500,#ffae00);
+  transition: width .3s;
+}
+
+.status {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 13px;
+  text-align: center;
+  background: rgba(255,255,255,.04);
+  color: #888;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+}
+
+/* RESULT */
+
+.result {
+  display: none;
+  margin-top: 15px;
+}
+
+.download {
+  display: block;
+  padding: 16px;
+  border-radius: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: #151515;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* FOOTER */
+
+.footer {
+  margin-top: 23px;
+  text-align: center;
+  color: #444;
+  font-size: 10px;
+}
+
+@media(max-width:500px) {
+  .container {
+    width: min(100% - 16px,720px);
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .upload-zone {
+    min-height: 200px;
+  }
+
+  .video-info {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
-<header>
-  <span class="badge">FFVN.TGM • PRIVATE API</span>
-  <h1>CHỈNH VIDEO 4K</h1>
-  <div class="sub">Upscale 3840×2160 • Tăng độ nét • FFmpeg</div>
-</header>
 
-<main class="card">
-  <label class="drop" id="drop">
-    <input id="file" type="file" accept="video/*">
-    <strong>CHỌN VIDEO</strong>
-    <span id="fileName">Nhấn để chọn hoặc kéo video vào đây</span>
-  </label>
+<main class="container">
 
-  <div class="info">
-    <div class="stat"><b>4K</b><small>3840 × 2160</small></div>
-    <div class="stat"><b>SHARP</b><small>Unsharp + Lanczos</small></div>
-    <div class="stat"><b>PRIVATE</b><small>API Key riêng</small></div>
-  </div>
+  <img
+    class="logo"
+    src="https://cdn.imagetourls.com/uploads/tyImg/1ggIdgxtr.jpg"
+    alt="FFVN.TGM"
+  >
 
-  <div class="row">
-    <button id="start" disabled>✨ CHỈNH VIDEO 4K</button>
-    <button id="clear" class="secondary">XÓA</button>
-  </div>
+  <h1 class="brand">FFVN.TGM</h1>
 
-  <div class="progress"><div class="bar" id="bar"></div></div>
-  <div class="status" id="status">Chưa có video.</div>
-  <a class="download" id="download">⬇ TẢI VIDEO 4K</a>
+  <p class="subtitle">
+    VIDEO ENHANCER • AUTO FRAME DETECTION • 4K
+  </p>
 
-  <div class="note">
-    Giao diện sử dụng GFF-LATIN-BOLD nếu bạn đặt
-    <b>GFFLatinW05-Bold.woff2</b> vào <b>public/fonts/</b>.
-    Video nguồn có độ phân giải thấp không thể khôi phục chi tiết thật đã mất chỉ bằng upscale.
-  </div>
+  <section class="card">
+
+    <!-- UPLOAD -->
+    <label
+      class="upload-zone"
+      id="uploadZone"
+      for="videoInput"
+    >
+
+      <div class="upload-content">
+
+        <div class="upload-icon">↑</div>
+
+        <div class="upload-title">
+          CHỌN VIDEO
+        </div>
+
+        <div class="upload-desc">
+          MP4 • MOV • MKV • WEBM • AVI
+        </div>
+
+      </div>
+
+      <input
+        id="videoInput"
+        type="file"
+        accept="video/*,.mp4,.mov,.mkv,.webm,.avi"
+      >
+
+    </label>
+
+    <!-- PREVIEW -->
+    <div class="preview" id="preview">
+
+      <video
+        id="videoPreview"
+        controls
+        playsinline
+        preload="metadata"
+      ></video>
+
+      <button
+        class="change-video"
+        id="changeVideo"
+        type="button"
+      >
+        Đổi video
+      </button>
+
+    </div>
+
+    <!-- FILE NAME -->
+    <div
+      class="file-name"
+      id="fileName"
+    ></div>
+
+    <!-- AUTO VIDEO INFO -->
+    <div
+      class="video-info"
+      id="videoInfo"
+    >
+
+      <div class="info">
+        <span class="label">ĐỘ PHÂN GIẢI</span>
+        <span
+          class="value"
+          id="resolution"
+        >
+          —
+        </span>
+      </div>
+
+      <div class="info">
+        <span class="label">TỶ LỆ KHUNG HÌNH</span>
+        <span
+          class="value"
+          id="aspectRatio"
+        >
+          —
+        </span>
+      </div>
+
+      <div class="info">
+        <span class="label">THỜI LƯỢNG</span>
+        <span
+          class="value"
+          id="duration"
+        >
+          —
+        </span>
+      </div>
+
+      <div class="info">
+        <span class="label">DUNG LƯỢNG</span>
+        <span
+          class="value"
+          id="fileSize"
+        >
+          —
+        </span>
+      </div>
+
+    </div>
+
+    <!-- API KEY -->
+    <div class="field">
+
+      <label>PRIVATE API KEY</label>
+
+      <input
+        id="apiKey"
+        type="password"
+        placeholder="Nhập API Key của bạn"
+        autocomplete="off"
+      >
+
+    </div>
+
+    <!-- PROCESS -->
+    <button
+      class="main-button"
+      id="enhanceBtn"
+      disabled
+    >
+      ✦ CHỈNH VIDEO SẮC NÉT 4K
+    </button>
+
+    <!-- PROGRESS -->
+    <div
+      class="progress-box"
+      id="progressBox"
+    >
+
+      <div class="progress-head">
+        <span id="progressText">
+          Đang xử lý...
+        </span>
+
+        <span id="progressPercent">
+          0%
+        </span>
+      </div>
+
+      <div class="progress">
+        <div
+          class="progress-bar"
+          id="progressBar"
+        ></div>
+      </div>
+
+      <div
+        class="status"
+        id="status"
+      >
+        Đang chuẩn bị...
+      </div>
+
+    </div>
+
+    <!-- RESULT -->
+    <div
+      class="result"
+      id="result"
+    >
+
+      <a
+        class="download"
+        id="downloadBtn"
+        href="#"
+      >
+        ↓ TẢI VIDEO 4K
+      </a>
+
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    FFVN.TGM • PRIVATE VIDEO API
+  </footer>
+
 </main>
-</div>
 
 <script>
-const API_KEY = localStorage.getItem("FFVN_TGM_API_KEY") || "";
-const fileInput = document.querySelector("#file");
-const drop = document.querySelector("#drop");
-const start = document.querySelector("#start");
-const clear = document.querySelector("#clear");
-const fileName = document.querySelector("#fileName");
-const bar = document.querySelector("#bar");
-const status = document.querySelector("#status");
-const download = document.querySelector("#download");
 
-let selected = null;
+const API_BASE = "";
 
-fileInput.addEventListener("change", e => setFile(e.target.files[0]));
-["dragenter","dragover"].forEach(x => drop.addEventListener(x,e=>{e.preventDefault();drop.classList.add("drag")}));
-["dragleave","drop"].forEach(x => drop.addEventListener(x,e=>{e.preventDefault();drop.classList.remove("drag")}));
-drop.addEventListener("drop", e => setFile(e.dataTransfer.files[0]));
+const videoInput =
+  document.getElementById("videoInput");
 
-function setFile(file){
-  if(!file) return;
-  if(!file.type.startsWith("video/")){
-    status.textContent="File không phải video.";
-    return;
-  }
-  selected=file;
-  fileName.textContent=`${file.name} • ${(file.size/1024/1024).toFixed(1)} MB`;
-  start.disabled=false;
-  status.textContent="Sẵn sàng xử lý.";
-  download.style.display="none";
-  bar.style.width="0%";
-}
+const uploadZone =
+  document.getElementById("uploadZone");
 
-clear.onclick=()=>{
-  selected=null;
-  fileInput.value="";
-  start.disabled=true;
-  fileName.textContent="Nhấn để chọn hoặc kéo video vào đây";
-  status.textContent="Chưa có video.";
-  bar.style.width="0%";
-  download.style.display="none";
-};
+const preview =
+  document.getElementById("preview");
 
-start.onclick=async()=>{
-  if(!selected) return;
-  if(!API_KEY){
-    status.textContent="Chưa có API Key. Mở DevTools Console và chạy: localStorage.setItem('FFVN_TGM_API_KEY','KEY_CUA_BAN')";
-    return;
-  }
+const videoPreview =
+  document.getElementById("videoPreview");
 
-  start.disabled=true;
-  status.textContent="Đang tải video lên...";
-  const fd=new FormData();
-  fd.append("video",selected);
+const changeVideo =
+  document.getElementById("changeVideo");
 
-  try{
-    const r=await fetch("/api/enhance",{
-      method:"POST",
-      headers:{"x-api-key":API_KEY},
-      body:fd
-    });
-    const data=await r.json();
-    if(!r.ok) throw new Error(data.error||"Upload failed");
+const fileName =
+  document.getElementById("fileName");
 
-    status.textContent="Đang xử lý 4K...";
-    await poll(data.id);
-  }catch(e){
-    status.textContent="Lỗi: "+e.message;
-    start.disabled=false;
-  }
-};
+const videoInfo =
+  document.getElementById("videoInfo");
 
-async function poll(id){
-  while(true){
-    const r=await fetch(`/api/status/${id}`,{
-      headers:{"x-api-key":API_KEY}
-    });
-    const d=await r.json();
-    if(!r.ok) throw new Error(d.error||"Status failed");
+const resolution =
+  document.getElementById("resolution");
 
-    bar.style.width=(d.progress||0)+"%";
-    status.textContent=d.status==="completed"
-      ?"Hoàn tất video 4K!"
-      :`Đang xử lý: ${d.progress||0}%${d.speed?" • "+d.speed:""}`;
+const aspectRatio =
+  document.getElementById("aspectRatio");
 
-    if(d.status==="completed"){
-      download.href=d.downloadUrl;
-      download.style.display="block";
-      start.disabled=false;
-      return;
+const duration =
+  document.getElementById("duration");
+
+const fileSize =
+  document.getElementById("fileSize");
+
+const apiKey =
+  document.getElementById("apiKey");
+
+const enhanceBtn =
+  document.getElementById("enhanceBtn");
+
+const progressBox =
+  document.getElementById("progressBox");
+
+const progressBar =
+  document.getElementById("progressBar");
+
+const progressPercent =
+  document.getElementById("progressPercent");
+
+const progressText =
+  document.getElementById("progressText");
+
+const status =
+  document.getElementById("status");
+
+const result =
+  document.getElementById("result");
+
+const downloadBtn =
+  document.getElementById("downloadBtn");
+
+let selectedFile = null;
+let currentJobId = null;
+let polling = null;
+let previewURL = null;
+
+
+/* =========================
+   API KEY
+========================= */
+
+apiKey.value =
+  localStorage.getItem("FFVN_TGM_API_KEY") || "";
+
+apiKey.addEventListener("input", () => {
+
+  localStorage.setItem(
+    "FFVN_TGM_API_KEY",
+    apiKey.value.trim()
+  );
+
+});
+
+
+/* =========================
+   SELECT VIDEO
+========================= */
+
+videoInput.addEventListener(
+  "change",
+  () => {
+
+    if (
+      videoInput.files &&
+      videoInput.files.length
+    ) {
+
+      loadVideo(
+        videoInput.files[0]
+      );
+
     }
-    if(d.status==="failed") throw new Error(d.error||"FFmpeg failed");
-    await new Promise(x=>setTimeout(x,1200));
+
   }
+);
+
+
+/* =========================
+   CHANGE VIDEO
+========================= */
+
+changeVideo.addEventListener(
+  "click",
+  () => {
+
+    videoInput.value = "";
+
+    videoInput.click();
+
+  }
+);
+
+
+/* =========================
+   DRAG & DROP
+========================= */
+
+uploadZone.addEventListener(
+  "dragover",
+  event => {
+
+    event.preventDefault();
+
+    uploadZone.classList.add("drag");
+
+  }
+);
+
+uploadZone.addEventListener(
+  "dragleave",
+  () => {
+
+    uploadZone.classList.remove("drag");
+
+  }
+);
+
+uploadZone.addEventListener(
+  "drop",
+  event => {
+
+    event.preventDefault();
+
+    uploadZone.classList.remove("drag");
+
+    const file =
+      event.dataTransfer.files[0];
+
+    if (!file) return;
+
+    if (
+      !file.type.startsWith("video/") &&
+      !/\.(mp4|mov|mkv|webm|avi)$/i.test(file.name)
+    ) {
+
+      alert("Vui lòng chọn một file video.");
+
+      return;
+
+    }
+
+    loadVideo(file);
+
+  }
+);
+
+
+/* =========================
+   LOAD VIDEO
+========================= */
+
+function loadVideo(file) {
+
+  if (
+    !file.type.startsWith("video/") &&
+    !/\.(mp4|mov|mkv|webm|avi)$/i.test(file.name)
+  ) {
+
+    alert("File này không phải video.");
+
+    return;
+
+  }
+
+  selectedFile = file;
+
+  if (previewURL) {
+    URL.revokeObjectURL(previewURL);
+  }
+
+  previewURL =
+    URL.createObjectURL(file);
+
+  videoPreview.src =
+    previewURL;
+
+  videoPreview.load();
+
+  fileName.style.display =
+    "block";
+
+  fileName.textContent =
+    file.name;
+
+  preview.style.display =
+    "block";
+
+  uploadZone.style.display =
+    "none";
+
+  videoInfo.style.display =
+    "grid";
+
+  enhanceBtn.disabled =
+    false;
+
+  result.style.display =
+    "none";
+
+  progressBox.style.display =
+    "none";
+
+
+  /* FILE SIZE */
+
+  fileSize.textContent =
+    formatBytes(file.size);
+
+
+  /* VIDEO METADATA */
+
+  videoPreview.onloadedmetadata =
+    () => {
+
+      const width =
+        videoPreview.videoWidth;
+
+      const height =
+        videoPreview.videoHeight;
+
+      const seconds =
+        videoPreview.duration;
+
+
+      resolution.textContent =
+        `${width} × ${height}`;
+
+
+      aspectRatio.textContent =
+        getAspectRatio(
+          width,
+          height
+        );
+
+
+      duration.textContent =
+        formatDuration(seconds);
+
+    };
+
 }
+
+
+/* =========================
+   ASPECT RATIO
+========================= */
+
+function getAspectRatio(
+  width,
+  height
+) {
+
+  if (!width || !height) {
+    return "—";
+  }
+
+  const gcd =
+    greatestCommonDivisor(
+      width,
+      height
+    );
+
+  const w =
+    width / gcd;
+
+  const h =
+    height / gcd;
+
+  return `${w}:${h}`;
+
+}
+
+
+function greatestCommonDivisor(
+  a,
+  b
+) {
+
+  while (b !== 0) {
+
+    const temp = b;
+
+    b = a % b;
+
+    a = temp;
+
+  }
+
+  return a;
+
+}
+
+
+/* =========================
+   DURATION
+========================= */
+
+function formatDuration(
+  seconds
+) {
+
+  if (
+    !Number.isFinite(seconds)
+  ) {
+
+    return "—";
+
+  }
+
+  seconds =
+    Math.floor(seconds);
+
+  const h =
+    Math.floor(seconds / 3600);
+
+  const m =
+    Math.floor(
+      (seconds % 3600) / 60
+    );
+
+  const s =
+    seconds % 60;
+
+  if (h > 0) {
+
+    return (
+      String(h).padStart(2,"0")
+      + ":"
+      + String(m).padStart(2,"0")
+      + ":"
+      + String(s).padStart(2,"0")
+    );
+
+  }
+
+  return (
+    String(m).padStart(2,"0")
+    + ":"
+    + String(s).padStart(2,"0")
+  );
+
+}
+
+
+/* =========================
+   FILE SIZE
+========================= */
+
+function formatBytes(bytes) {
+
+  if (!bytes) {
+    return "0 B";
+  }
+
+  const units =
+    ["B","KB","MB","GB"];
+
+  const index =
+    Math.floor(
+      Math.log(bytes) /
+      Math.log(1024)
+    );
+
+  return (
+    (bytes /
+      Math.pow(1024,index))
+      .toFixed(2)
+    + " "
+    + units[index]
+  );
+
+}
+
+
+/* =========================
+   PROCESS VIDEO
+========================= */
+
+enhanceBtn.addEventListener(
+  "click",
+  async () => {
+
+    if (!selectedFile) {
+
+      alert(
+        "Vui lòng chọn video trước."
+      );
+
+      return;
+
+    }
+
+    const key =
+      apiKey.value.trim();
+
+    if (!key) {
+
+      alert(
+        "Vui lòng nhập API Key."
+      );
+
+      apiKey.focus();
+
+      return;
+
+    }
+
+    enhanceBtn.disabled =
+      true;
+
+    progressBox.style.display =
+      "block";
+
+    result.style.display =
+      "none";
+
+    setProgress(
+      0,
+      "Đang tải video..."
+    );
+
+    status.textContent =
+      "Đang gửi video lên API...";
+
+
+    try {
+
+      const formData =
+        new FormData();
+
+      formData.append(
+        "video",
+        selectedFile
+      );
+
+
+      const response =
+        await fetch(
+          `${API_BASE}/api/enhance`,
+          {
+            method: "POST",
+
+            headers: {
+              "x-api-key": key
+            },
+
+            body: formData
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          data.error ||
+          "Không thể xử lý video."
+        );
+
+      }
+
+
+      currentJobId =
+        data.id;
+
+
+      setProgress(
+        5,
+        "Đã tải video"
+      );
+
+      status.textContent =
+        "FFmpeg đang xử lý video 4K...";
+
+
+      startPolling();
+
+    }
+
+    catch (error) {
+
+      status.textContent =
+        "Lỗi: " + error.message;
+
+      setProgress(
+        0,
+        "Thất bại"
+      );
+
+      enhanceBtn.disabled =
+        false;
+
+    }
+
+  }
+);
+
+
+/* =========================
+   POLLING
+========================= */
+
+function startPolling() {
+
+  clearInterval(polling);
+
+  polling =
+    setInterval(
+      async () => {
+
+        try {
+
+          const key =
+            apiKey.value.trim();
+
+
+          const response =
+            await fetch(
+              `${API_BASE}/api/status/${currentJobId}`,
+              {
+                headers: {
+                  "x-api-key": key
+                }
+              }
+            );
+
+
+          const data =
+            await response.json();
+
+
+          if (!response.ok) {
+
+            throw new Error(
+              data.error ||
+              "Không lấy được trạng thái."
+            );
+
+          }
+
+
+          const percent =
+            Number(
+              data.progress || 0
+            );
+
+
+          setProgress(
+            percent,
+            data.status === "completed"
+              ? "Hoàn tất"
+              : "Đang xử lý"
+          );
+
+
+          if (data.message) {
+
+            status.textContent =
+              data.message;
+
+          }
+
+
+          if (
+            data.status ===
+            "completed"
+          ) {
+
+            clearInterval(
+              polling
+            );
+
+
+            const downloadURL =
+              `${API_BASE}/api/download/${currentJobId}?key=${encodeURIComponent(key)}`;
+
+
+            downloadBtn.href =
+              downloadURL;
+
+
+            result.style.display =
+              "block";
+
+
+            setProgress(
+              100,
+              "Hoàn tất"
+            );
+
+
+            status.textContent =
+              "Video 4K đã xử lý thành công.";
+
+
+            enhanceBtn.disabled =
+              false;
+
+          }
+
+
+          if (
+            data.status ===
+            "error"
+          ) {
+
+            throw new Error(
+              data.error ||
+              "Xử lý video thất bại."
+            );
+
+          }
+
+        }
+
+        catch (error) {
+
+          clearInterval(
+            polling
+          );
+
+          status.textContent =
+            "Lỗi: " +
+            error.message;
+
+          setProgress(
+            0,
+            "Thất bại"
+          );
+
+          enhanceBtn.disabled =
+            false;
+
+        }
+
+      },
+      1500
+    );
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function setProgress(
+  percent,
+  text
+) {
+
+  percent =
+    Math.max(
+      0,
+      Math.min(
+        100,
+        Number(percent)
+      )
+    );
+
+
+  progressBar.style.width =
+    percent + "%";
+
+
+  progressPercent.textContent =
+    Math.round(percent) + "%";
+
+
+  progressText.textContent =
+    text;
+
+}
+
+
+/* =========================
+   CLEANUP
+========================= */
+
+window.addEventListener(
+  "beforeunload",
+  () => {
+
+    if (previewURL) {
+
+      URL.revokeObjectURL(
+        previewURL
+      );
+
+    }
+
+  }
+);
+
 </script>
+
 </body>
-  </html>
+</html>
